@@ -323,7 +323,11 @@ class HLObject(CommonStateObject):
 
 class KeysViewHDF5(KeysView):
     def __str__(self):
-        return "<KeysViewHDF5 {}>".format(list(self))
+        if len(self) > 20:
+            k = f"... {len(self)} entries ..."
+        else:
+            k = f"{list(self)}"
+        return f"<KeysViewHDF5 {k}>"
 
     __repr__ = __str__
 
